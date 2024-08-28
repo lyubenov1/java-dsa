@@ -10,7 +10,7 @@ public class TwoSum {
 
         int[] resultArr = twoSum(arr, target);
 
-        if (resultArr.length != 0) {
+        if (resultArr.length > 0) {
             System.out.println(Arrays.toString(resultArr));
         } else {
             System.out.println("Not Found");
