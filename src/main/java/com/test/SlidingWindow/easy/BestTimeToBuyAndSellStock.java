@@ -1,4 +1,4 @@
-package com.test.SlidingWindow;
+package com.test.SlidingWindow.easy;
 
 public class BestTimeToBuyAndSellStock {
 

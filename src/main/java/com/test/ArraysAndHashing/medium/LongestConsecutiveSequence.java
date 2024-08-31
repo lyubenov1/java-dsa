@@ -1,4 +1,4 @@
-package com.test.ArraysAndHashing;
+package com.test.ArraysAndHashing.medium;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.test.TwoPointers;
+package com.test.TwoPointers.easy;
 
 public class ValidPalindrome {
 

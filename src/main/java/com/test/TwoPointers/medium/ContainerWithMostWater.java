@@ -1,4 +1,4 @@
-package com.test.TwoPointers;
+package com.test.TwoPointers.medium;
 
 public class ContainerWithMostWater {
 
