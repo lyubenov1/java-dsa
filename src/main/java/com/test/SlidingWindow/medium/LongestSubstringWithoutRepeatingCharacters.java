@@ -13,8 +13,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
     private static int solution(String str) {
         int l = 0;
         Set<Character> charSet = new HashSet<>();
-        char[] charArr = str.toCharArray();
-        int length = charArr.length;
+        int length = str.length();
         int longest = 0;
 
         for (int r = 0; r < length; r++) {
@@ -22,7 +21,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 charSet.remove(str.charAt(l));
                 l++;
             }
-            charSet.add(charArr[r]);
+            charSet.add(str.charAt(r));
             longest = Math.max(longest, charSet.size());
         }
 
