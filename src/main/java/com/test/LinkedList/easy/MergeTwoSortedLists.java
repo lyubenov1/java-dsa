@@ -1,6 +1,6 @@
-package com.test.LinkedList;
+package com.test.LinkedList.easy;
 
-import com.test.LinkedList.ReverseLinkedList.*;
+import com.test.LinkedList.easy.ReverseLinkedList.*;
 
 public class MergeTwoSortedLists {
 
