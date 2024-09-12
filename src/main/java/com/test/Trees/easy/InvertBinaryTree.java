@@ -1,4 +1,6 @@
-package com.test.Trees;
+package com.test.Trees.easy;
+
+import com.test.Trees.*;
 
 public class InvertBinaryTree {
 
