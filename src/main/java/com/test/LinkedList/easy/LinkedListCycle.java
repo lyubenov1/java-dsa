@@ -1,6 +1,6 @@
 package com.test.LinkedList.easy;
 
-import com.test.LinkedList.easy.ReverseLinkedList.*;
+import com.test.LinkedList.*;
 
 public class LinkedListCycle {
 

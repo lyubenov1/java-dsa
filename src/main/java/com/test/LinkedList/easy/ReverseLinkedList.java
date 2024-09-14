@@ -1,15 +1,8 @@
 package com.test.LinkedList.easy;
 
+import com.test.LinkedList.*;
+
 public class ReverseLinkedList {
-
-    public static class ListNode {
-        public int val;
-        public ListNode next;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static void main(String[] args) {
         int[] input = {1, 2, 3, 4, 5};
