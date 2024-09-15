@@ -1,4 +1,4 @@
-package com.test.Heap;
+package com.test.Heap.easy;
 
 import java.util.*;
 
