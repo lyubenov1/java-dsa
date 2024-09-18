@@ -2,65 +2,45 @@ package com.test.Graphs.medium;
 
 public class NumberOfIslands {
 
-    int y;          // The height of the given grid
-    int x;          // The width of the given grid
-    char[][] g;     // The given grid, stored to reduce recursion memory usage
+    static int height;
+    static int width;
+    static char[][] g;     // The given grid, stored to reduce recursion memory usage
 
-    /**
-     * Given a 2d grid map of '1's (land) and '0's (water),
-     * count the number of islands.
-     * This method approaches the problem as one of depth-first connected
-     * components search
-     * @param grid, the given grid.
-     * @return the number of islands.
-     */
-    public int numIslands(char[][] grid) {
+
+    public static int numIslands(char[][] grid) {
         // Store the given grid
         // This prevents having to make copies during recursion
         g = grid;
 
-        // Our count to return
-        int c = 0;
+        int count = 0;
 
         // Dimensions of the given graph
-        y = g.length;
-        if (y == 0) return 0;
-        x = g[0].length;
+        height = g.length;
+        if (height == 0) return 0;
+        width = g[0].length;
 
-        // Iterate over the entire given grid
-        for (int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                if (g[i][j] == '1') {
-                    dfs(i, j);
-                    c++;
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                if (g[row][col] == '1') {
+                    dfs(row, col);
+                    count++;
                 }
             }
         }
-        return c;
+        return count;
     }
 
-    /**
-     * Marks the given site as visited, then checks adjacent sites.
-     * Or, Marks the given site as water, if land, then checks adjacent sites.
-     * Or, Given one coordinate (i,j) of an island, obliterates the island
-     * from the given grid, so that it is not counted again.
-     *
-     * @param i, the row index of the given grid
-     * @param j, the column index of the given grid
-     */
-    private void dfs(int i, int j) {
-
-        // Check for invalid indices and for sites that aren't land
-        if (i < 0 || i >= y || j < 0 || j >= x || g[i][j] != '1') return;
+    private static void dfs(int row, int col) {
+        if (row < 0 || row >= height || col < 0 || col >= width || g[row][col] != '1') return;
 
         // Mark the site as visited
-        g[i][j] = '0';
+        g[row][col] = '0';
 
         // Check all adjacent sites
-        dfs(i + 1, j);
-        dfs(i - 1, j);
-        dfs(i, j + 1);
-        dfs(i, j - 1);
+        dfs(row + 1, col);
+        dfs(row - 1, col);
+        dfs(row, col + 1);
+        dfs(row, col - 1);
     }
 
     public static void main(String[] args) {
@@ -71,8 +51,54 @@ public class NumberOfIslands {
                 {'0', '0', '0', '0', '0'}
         };
 
-        NumberOfIslands solution = new NumberOfIslands();
-        int result = solution.numIslands(grid);
+        int result = numIslands(grid);
         System.out.println("Number of islands: " + result);
     }
+
+    /* BFS solution
+
+     public int numIslands(char[][] grid) {
+        if (grid.length == 0) {
+            return 0;
+        }
+
+        int m = grid.length, n = grid[0].length;
+
+        boolean[][] visited = new boolean[m][n];
+        Queue<int[]> queue = new LinkedList<>();
+        int count = 0;
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
+                if(grid[i][j] == '1' && !visited[i][j]) {
+                    queue.offer(new int[]{i, j});
+                    visited[i][j] = true;
+                    bfs(grid, queue, visited);
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    int[][] dirs = {{0,1}, {1,0}, {0, -1}, {-1, 0}};
+    private void bfs(char[][] grid, Queue<int[]> queue, boolean[][] visited) {
+        int m = grid.length;
+        int n = grid[0].length;
+
+        while(!queue.isEmpty()) {
+            int[] curr = queue.poll();
+            for (int[] dir : dirs) {
+                int x = curr[0] + dir[0];
+                int y = curr[1] + dir[1];
+
+                if (x < 0 || x >= m || y < 0 || y >=n || visited[x][y] || grid[x][y] == '0')
+                    continue;
+
+                visited[x][y] = true;
+                queue.offer(new int[]{x, y});
+            }
+        }
+    }
+     */
 }
