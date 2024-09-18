@@ -4,8 +4,7 @@ public class NumberOfIslands {
 
     static int height;
     static int width;
-    static char[][] g;     // The given grid, stored to reduce recursion memory usage
-
+    static char[][] g;  // The given grid, stored to reduce recursion memory usage
 
     public static int numIslands(char[][] grid) {
         // Store the given grid
