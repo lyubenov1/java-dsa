@@ -4,8 +4,8 @@ import java.util.*;
 
 public class PacificAtlanticWaterFlow {
 
-    public static List<int[]> pacificAtlantic(int[][] matrix) {
-        List<int[]> res = new LinkedList<>();
+    public static List<List<Integer>> pacificAtlantic(int[][] matrix) {
+        List<List<Integer>> res = new LinkedList<>();
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return res;
         }
@@ -26,7 +26,11 @@ public class PacificAtlanticWaterFlow {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (pacific[i][j] && atlantic[i][j]) {
-                    res.add(new int[]{i, j});
+                    // Convert int[] to List<Integer>
+                    List<Integer> cell = new ArrayList<>();
+                    cell.add(i);
+                    cell.add(j);
+                    res.add(cell);
                 }
             }
         }
@@ -58,9 +62,9 @@ public class PacificAtlanticWaterFlow {
                 {5, 1, 1, 2, 4}
         };
 
-        List<int[]> result = pacificAtlantic(heights);
-        for (int[] coordinates : result) {
-            System.out.println(Arrays.toString(coordinates));
+        List<List<Integer>> result = pacificAtlantic(heights);
+        for (List<Integer> coordinates : result) {
+            System.out.println(coordinates);
         }
     }
 }
