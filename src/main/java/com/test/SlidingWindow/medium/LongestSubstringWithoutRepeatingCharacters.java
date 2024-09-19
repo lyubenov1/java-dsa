@@ -11,20 +11,32 @@ public class LongestSubstringWithoutRepeatingCharacters {
     }
 
     private static int solution(String str) {
-        int l = 0;
-        Set<Character> charSet = new HashSet<>();
-        int length = str.length();
-        int longest = 0;
+        if (str.isEmpty()) return 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int max = 0;
 
-        for (int r = 0; r < length; r++) {
-            while (charSet.contains(str.charAt(r))) {
-                charSet.remove(str.charAt(l));
-                l++;
+        for (int i = 0, j = 0; i < str.length(); ++i) {
+            if (map.containsKey(str.charAt(i))) {
+                j = Math.max(j, map.get(str.charAt(i)) + 1);
             }
-            charSet.add(str.charAt(r));
-            longest = Math.max(longest, charSet.size());
+            map.put(str.charAt(i) , i);
+            max = Math.max(max, i - j + 1);
         }
-
-        return longest;
+        return max;
     }
+
+    /*
+      private static int solution(String str) {
+        Queue<Character> queue = new LinkedList<>();
+        int res = 0;
+        for (char c : s.toCharArray()) {
+            while (queue.contains(c)) {
+                queue.poll();
+            }
+            queue.offer(c);
+            res = Math.max(res, queue.size());
+        }
+        return res;
+    }
+     */
 }
