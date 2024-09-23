@@ -5,16 +5,14 @@ import java.util.Arrays;
 public class RemoveElement {
 
     public static int removeElement(int[] nums, int val) {
-        int i = 0; // Pointer for the next position of non-val elements
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] != val) {
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-                i++;
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
             }
         }
-        return i; // Number of elements not equal to val
+        return k;
     }
 
     public static void main(String[] args) {
